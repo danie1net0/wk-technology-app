@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListCustomersComponent } from './components/list-customers/list-customers.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { CustomerResolverGuard } from './guards/customer-resolver-guard.service';
+import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,13 @@ const routes: Routes = [
   {
     path: 'cadastrar',
     component: CreateCustomerComponent,
+  },
+  {
+    path: 'editar/:id',
+    component: EditCustomerComponent,
+    resolve: {
+      customer: CustomerResolverGuard,
+    },
   },
   {
     path: '',

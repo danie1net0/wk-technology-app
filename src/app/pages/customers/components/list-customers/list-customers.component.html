@@ -20,6 +20,7 @@
               <th class="table-head">CPF</th>
               <th class="table-head">E-mail</th>
               <th class="table-head">Data de Nascimento</th>
+              <th class="table-head">Ações</th>
             </tr>
           </thead>
 
@@ -30,6 +31,11 @@
               <td class="table-data">{{ customer.cpf | cpf }}</td>
               <td class="table-data">{{ customer.email }}</td>
               <td class="table-data">{{ customer.birth_date | date:'d/MM/Y' }}</td>
+              <td class="table-data">
+                <button class="button button-indigo" [routerLink]="'../editar/' + customer.id">
+                  Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
