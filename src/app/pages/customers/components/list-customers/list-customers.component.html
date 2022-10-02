@@ -1,0 +1,61 @@
+<div class="flex flex-col space-y-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-xl font-semibold text-gray-900">
+      Clientes
+    </h1>
+
+    <button type="button" class="button button-indigo">
+      Cadastrar Cliente
+    </button>
+  </div>
+
+  <div class="flex flex-col space-y-6" *ngIf="(customers$ | async) as customers; else loading">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+        <table class="table">
+          <thead class="table-header">
+            <tr>
+              <th class="table-head py-3.5 pl-4 pr-3 sm:pl-6">ID</th>
+              <th class="table-head">Nome</th>
+              <th class="table-head">CPF</th>
+              <th class="table-head">E-mail</th>
+              <th class="table-head">Data de Nascimento</th>
+            </tr>
+          </thead>
+
+          <tbody class="table-body" *ngIf="customers.data.length; else customersNotFound">
+            <tr *ngFor="let customer of customers.data">
+              <td class="table-data py-4 pl-4 pr-3 font-medium text-gray-900 sm:pl-6">{{ customer.id }}</td>
+              <td class="table-data">{{ customer.name }}</td>
+              <td class="table-data">{{ customer.cpf | cpf }}</td>
+              <td class="table-data">{{ customer.email }}</td>
+              <td class="table-data">{{ customer.birth_date | date:'d/MM/Y' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <app-pagination (changePage)="loadCustomers($event)" [meta]="customers.meta"></app-pagination>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="rounded-md border border-indigo-500 bg-indigo-50 p-4">
+    <div class="flex">
+      <div class="ml-3 flex-1 md:flex md:justify-between">
+        <p class="text-sm text-indigo-600">Carregando cursos...</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #customersNotFound>
+  <tbody class="table-body">
+    <tr>
+      <td class="table-data" colspan="6">
+        Nenhum cliente encontrado.
+      </td>
+    </tr>
+  </tbody>
+</ng-template>
