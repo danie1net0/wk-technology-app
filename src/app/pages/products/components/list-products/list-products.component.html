@@ -9,7 +9,7 @@
     </button>
   </div>
 
-  <div *ngIf="(products$ | async) as prdocuts; else loading" class="flex flex-col space-y-6">
+  <div *ngIf="(products$ | async) as products; else loading" class="flex flex-col space-y-6">
     <div class="inline-block min-w-full align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
         <table class="table">
@@ -22,8 +22,8 @@
             </tr>
           </thead>
 
-          <tbody *ngIf="prdocuts.data.length; else prdocutsNotFound" class="table-body">
-            <tr *ngFor="let product of prdocuts.data">
+          <tbody *ngIf="products.data.length; else productsNotFound" class="table-body">
+            <tr *ngFor="let product of products.data">
               <td class="table-data py-4 pl-4 pr-3 font-medium text-gray-900 sm:pl-6">{{ product.id }}</td>
               <td class="table-data">{{ product.name }}</td>
               <td class="table-data">{{ formatUnitValue(product.unit_value) }}</td>
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <app-pagination (changePage)="loadProducts($event)" [meta]="prdocuts.meta"></app-pagination>
+    <app-pagination (changePage)="loadProducts($event)" [meta]="products.meta"></app-pagination>
   </div>
 </div>
 
@@ -58,7 +58,7 @@
   </div>
 </ng-template>
 
-<ng-template #prdocutsNotFound>
+<ng-template #productsNotFound>
   <tbody class="table-body">
     <tr>
       <td class="table-data" colspan="6">
