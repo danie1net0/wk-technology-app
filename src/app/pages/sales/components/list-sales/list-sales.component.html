@@ -1,0 +1,67 @@
+<div class="flex flex-col space-y-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-xl font-semibold text-gray-900">
+      Vendas
+    </h1>
+
+    <button class="button button-green" routerLink="../cadastrar" type="button">
+      Cadastrar Venda
+    </button>
+  </div>
+
+  <div *ngIf="(sales$ | async) as sales; else loading" class="flex flex-col space-y-6">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+        <table class="table">
+          <thead class="table-header">
+            <tr>
+              <th class="table-head py-3.5 pl-4 pr-3 sm:pl-6">ID</th>
+              <th class="table-head">Cliente</th>
+              <th class="table-head">Produtos</th>
+              <th class="table-head">Total</th>
+              <th class="table-head">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="sales.data.length; else salesNotFound" class="table-body">
+            <tr *ngFor="let sale of sales.data">
+              <td class="table-data py-4 pl-4 pr-3 font-medium text-gray-900 sm:pl-6">{{ sale.id }}</td>
+              <td class="table-data">{{ sale.customer.name }}</td>
+              <td class="table-data">{{ sale.products.length }}</td>
+              <td class="table-data">{{ formatTotal(sale.total) }}</td>
+              <td class="table-data">
+                <div class="flex space-x-3">
+                  <button [routerLink]="'../visualizar/' + sale.id" class="button button-gray">
+                    Visualizar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <app-pagination (changePage)="loadSales($event)" [meta]="sales.meta"></app-pagination>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="rounded-md border border-indigo-500 bg-indigo-50 p-4">
+    <div class="flex">
+      <div class="ml-3 flex-1 md:flex md:justify-between">
+        <p class="text-sm text-indigo-600">Carregando vendas...</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #salesNotFound>
+  <tbody class="table-body">
+    <tr>
+      <td class="table-data" colspan="6">
+        Nenhum venda encontrada.
+      </td>
+    </tr>
+  </tbody>
+</ng-template>

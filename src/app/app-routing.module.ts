@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'produtos',
     loadChildren: (): Promise<any> => import('./pages/products/products.module').then((module) => module.ProductsModule),
   },
+  {
+    path: 'vendas',
+    loadChildren: (): Promise<any> => import('./pages/sales/sales.module').then((module) => module.SalesModule),
+  },
 ];
 
 @NgModule({
