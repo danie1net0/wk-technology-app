@@ -1,93 +1,107 @@
-<form class="space-y-8 divide-y divide-gray-200" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="space-y-8 divide-y divide-gray-200">
-    <div>
-      <div>
-        <h3 class="text-lg font-medium leading-6 text-gray-900">Dados Pessoais</h3>
-        <p class="mt-1 text-sm text-gray-500">Dados pessoais do cliente.</p>
-      </div>
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="py-4 space-y-6 divide-y divide-gray-200">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">
+        Dados Pessoais
+      </h3>
 
-      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
-        <div>
-          <app-label>Nome:</app-label>
-          <app-input [isValid]="isValid('name')" formControlName="name"></app-input>
-          <app-errors [control]="formGroup.get('name')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>CPF:</app-label>
-          <app-input [isValid]="isValid('cpf')" formControlName="cpf" mask="000.000.000-00"></app-input>
-          <app-errors [control]="formGroup.get('cpf')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>E-mail:</app-label>
-          <app-input [isValid]="isValid('email')" formControlName="email" inputType="email"></app-input>
-          <app-errors [control]="formGroup.get('email')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>Data de nascimento:</app-label>
-          <app-input [isValid]="isValid('birth_date')" formControlName="birth_date" inputType="date"></app-input>
-          <app-errors [control]="formGroup.get('birth_date')"></app-errors>
-        </div>
-      </div>
+      <p class="mt-1 text-sm text-gray-600">
+        Dados pessoais do cliente.
+      </p>
     </div>
 
-    <div class="pt-8">
-      <div>
-        <h3 class="text-lg font-medium leading-6 text-gray-900">Endereço</h3>
-        <p class="mt-1 text-sm text-gray-500">Endereço do cliente.</p>
-      </div>
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <div class="overflow-hidden shadow rounded-md">
+        <div class="bg-white px-4 py-5 sm:p-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+          <div>
+            <app-label>Nome:</app-label>
+            <app-input [isValid]="isValid('name')" formControlName="name"></app-input>
+            <app-errors [control]="formGroup.get('name')"></app-errors>
+          </div>
 
-      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-3" formGroupName="address">
-        <div>
-          <app-label>CEP:</app-label>
-          <app-input [isValid]="isValid('address.zip_code')" mask="00000-000" formControlName="zip_code"></app-input>
-          <app-errors [control]="formGroup.get('address.zip_code')"></app-errors>
-        </div>
+          <div>
+            <app-label>CPF:</app-label>
+            <app-input [isValid]="isValid('cpf')" formControlName="cpf" mask="000.000.000-00"></app-input>
+            <app-errors [control]="formGroup.get('cpf')"></app-errors>
+          </div>
 
-        <div>
-          <app-label>Logradouro:</app-label>
-          <app-input [isValid]="isValid('address.public_place')" formControlName="public_place"></app-input>
-          <app-errors [control]="formGroup.get('address.public_place')"></app-errors>
-        </div>
+          <div>
+            <app-label>E-mail:</app-label>
+            <app-input [isValid]="isValid('email')" formControlName="email" inputType="email"></app-input>
+            <app-errors [control]="formGroup.get('email')"></app-errors>
+          </div>
 
-        <div>
-          <app-label>Número:</app-label>
-          <app-input [isValid]="isValid('address.number')" formControlName="number"></app-input>
-          <app-errors [control]="formGroup.get('address.number')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>Bairro:</app-label>
-          <app-input [isValid]="isValid('address.neighborhood')" formControlName="neighborhood"></app-input>
-          <app-errors [control]="formGroup.get('address.neighborhood')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>Complemento:</app-label>
-          <app-input [isValid]="isValid('address.complement')" formControlName="complement"></app-input>
-          <app-errors [control]="formGroup.get('address.complement')"></app-errors>
-        </div>
-
-        <div>
-          <app-label>Cidade:</app-label>
-          <app-input [isValid]="isValid('address.city')" formControlName="city"></app-input>
-          <app-errors [control]="formGroup.get('address.city')"></app-errors>
+          <div>
+            <app-label>Data de nascimento:</app-label>
+            <app-input [isValid]="isValid('birth_date')" formControlName="birth_date" inputType="date"></app-input>
+            <app-errors [control]="formGroup.get('birth_date')"></app-errors>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="pt-5">
-    <div class="flex justify-end space-x-3">
-      <button routerLink=".." type="button" class="button button-neutral">
-        Voltar
-      </button>
+  <div class="pt-6 md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">
+        Endereço
+      </h3>
 
-      <button type="submit" class="button button-indigo">
-        Salvar
-      </button>
+      <p class="mt-1 text-sm text-gray-600">
+        Endereço do cliente.
+      </p>
     </div>
+
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <div class="overflow-hidden shadow rounded-md">
+        <div class="bg-white px-4 py-5 sm:p-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2" formGroupName="address">
+          <div>
+            <app-label>CEP:</app-label>
+            <app-input [isValid]="isValid('address.zip_code')" formControlName="zip_code" mask="00000-000"></app-input>
+            <app-errors [control]="formGroup.get('address.zip_code')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Logradouro:</app-label>
+            <app-input [isValid]="isValid('address.public_place')" formControlName="public_place"></app-input>
+            <app-errors [control]="formGroup.get('address.public_place')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Número:</app-label>
+            <app-input [isValid]="isValid('address.number')" formControlName="number"></app-input>
+            <app-errors [control]="formGroup.get('address.number')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Bairro:</app-label>
+            <app-input [isValid]="isValid('address.neighborhood')" formControlName="neighborhood"></app-input>
+            <app-errors [control]="formGroup.get('address.neighborhood')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Complemento:</app-label>
+            <app-input [isValid]="isValid('address.complement')" formControlName="complement"></app-input>
+            <app-errors [control]="formGroup.get('address.complement')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Cidade:</app-label>
+            <app-input [isValid]="isValid('address.city')" formControlName="city"></app-input>
+            <app-errors [control]="formGroup.get('address.city')"></app-errors>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-6 flex justify-end space-x-3">
+    <button class="button button-neutral" routerLink=".." type="button">
+      Voltar
+    </button>
+
+    <button class="button button-indigo" type="submit">
+      Salvar
+    </button>
   </div>
 </form>
