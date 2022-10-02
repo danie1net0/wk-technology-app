@@ -6,7 +6,6 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FormModule } from '../../shared/components/form/form.module';
-import { CpfPipe } from '../../shared/pipes/cpf.pipe';
 import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 import { ProductService } from './services/product.service';
 import { ProductResolverGuard } from './guards/product-resolver-guard.service';
@@ -21,7 +20,6 @@ import { ProductResolverGuard } from './guards/product-resolver-guard.service';
     CommonModule,
     ProductsRoutingModule,
     FormModule,
-    CpfPipe,
     PaginationComponent,
   ],
   providers: [ProductService, ProductResolverGuard],
