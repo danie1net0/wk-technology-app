@@ -4,12 +4,12 @@
       Clientes
     </h1>
 
-    <button routerLink="../cadastrar" type="button" class="button button-indigo">
+    <button class="button button-green" routerLink="../cadastrar" type="button">
       Cadastrar Cliente
     </button>
   </div>
 
-  <div class="flex flex-col space-y-6" *ngIf="(customers$ | async) as customers; else loading">
+  <div *ngIf="(customers$ | async) as customers; else loading" class="flex flex-col space-y-6">
     <div class="inline-block min-w-full align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
         <table class="table">
@@ -24,7 +24,7 @@
             </tr>
           </thead>
 
-          <tbody class="table-body" *ngIf="customers.data.length; else customersNotFound">
+          <tbody *ngIf="customers.data.length; else customersNotFound" class="table-body">
             <tr *ngFor="let customer of customers.data">
               <td class="table-data py-4 pl-4 pr-3 font-medium text-gray-900 sm:pl-6">{{ customer.id }}</td>
               <td class="table-data">{{ customer.name }}</td>
@@ -32,9 +32,15 @@
               <td class="table-data">{{ customer.email }}</td>
               <td class="table-data">{{ customer.birth_date | date:'d/MM/Y' }}</td>
               <td class="table-data">
-                <button class="button button-indigo" [routerLink]="'../editar/' + customer.id">
-                  Editar
-                </button>
+                <div class="flex space-x-3">
+                  <button [routerLink]="'../editar/' + customer.id" class="button button-gray">
+                    Editar
+                  </button>
+
+                  <button (click)="confirmDeletion(customer.id)" class="button button-red">
+                    Deletar
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>

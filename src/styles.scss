@@ -29,6 +29,18 @@
     @apply border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500;
   }
 
+  &-green {
+    @apply border-transparent bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+
+  &-gray {
+    @apply border-transparent bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+  }
+
+  &-red {
+    @apply border-transparent bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+
   &-neutral {
     @apply border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-indigo-500;
   }

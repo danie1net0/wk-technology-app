@@ -26,7 +26,7 @@ export abstract class Crud<T> {
     return this.httpClient.post(this.API_URL, record, this.httpOptions).pipe(take(1));
   }
 
-  public show(id: string, params: any = {}): Observable<any> {
+  public show(id: number, params: any = {}): Observable<any> {
     this.setParams(params);
     return this.httpClient.get<T>(`${this.API_URL}/${id}`, this.httpOptions).pipe(take(1));
   }
@@ -37,7 +37,7 @@ export abstract class Crud<T> {
     return this.httpClient.put<T>(`${this.API_URL}/${record.id}`, record, this.httpOptions).pipe(take(1));
   }
 
-  public destroy(id: string): Observable<any> {
+  public destroy(id: number): Observable<any> {
     this.setParams({});
     return this.httpClient.delete(`${this.API_URL}/${id}`, this.httpOptions).pipe(take(1));
   }
