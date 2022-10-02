@@ -1,0 +1,29 @@
+<nav class="flex items-center justify-between">
+  <div class="hidden sm:block">
+    <p class="text-sm text-gray-700">
+      Mostrando
+      <span class="font-medium">{{ meta.from }}</span>
+      a
+      <span class="font-medium">{{ meta.to }}</span>
+      de
+      <span class="font-medium">{{ meta.total }}</span>
+      resultados
+    </p>
+  </div>
+
+  <div class="flex flex-1 justify-between sm:justify-end">
+    <button
+      (click)="onPrevious()"
+      [disabled]="isFirstPage"
+      class="relative inline-flex items-center rounded-md border border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-gray-50">
+      Anterior
+    </button>
+
+    <button
+      (click)="onNext()"
+      [disabled]="isLastPage"
+      class="relative ml-3 inline-flex items-center rounded-md border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 hover:bg-gray-50">
+      Próximo
+    </button>
+  </div>
+</nav>
