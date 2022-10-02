@@ -10,11 +10,11 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a [routerLink]="'clientes'" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+              <a routerLink="clientes" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
                 Clientes
               </a>
 
-              <a class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">
+              <a routerLink="produtos" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Produtos
               </a>
 
@@ -55,11 +55,11 @@
     <div *ngIf="showDropdownMenu" class="border-b border-gray-700 md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 py-3 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a [routerLink]="'clientes'" class="bg-gray-900 text-white px-3 py-2 rounded-md text-base font-medium">
+        <a routerLink="clientes" class="bg-gray-900 text-white px-3 py-2 rounded-md text-base font-medium">
           Clientes
         </a>
 
-        <a class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="#">
+        <a routerLink="produtos" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
           Produtos
         </a>
 

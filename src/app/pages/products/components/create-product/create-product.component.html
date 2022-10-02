@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="py-4 space-y-6 divide-y divide-gray-200">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">
+        Produto
+      </h3>
+
+      <p class="mt-1 text-sm text-gray-600">
+        Dados do produto.
+      </p>
+    </div>
+
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <div class="overflow-hidden shadow rounded-md">
+        <div class="bg-white px-4 py-5 sm:p-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+          <div>
+            <app-label>Nome:</app-label>
+            <app-input [isValid]="isValid('name')" formControlName="name"></app-input>
+            <app-errors [control]="formGroup.get('name')"></app-errors>
+          </div>
+
+          <div>
+            <app-label>Valor unitário: R$</app-label>
+
+            <app-input
+              [isValid]="isValid('unit_value')"
+              formControlName="unit_value"
+              inputType="number"></app-input>
+
+            <app-errors [control]="formGroup.get('unit_value')"></app-errors>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-6 flex justify-end space-x-3">
+    <button class="button button-neutral" routerLink=".." type="button">
+      Voltar
+    </button>
+
+    <button class="button button-indigo" type="submit">
+      Salvar
+    </button>
+  </div>
+</form>

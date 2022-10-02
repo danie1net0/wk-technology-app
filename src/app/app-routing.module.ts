@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: (): Promise<any> => import('./pages/customers/customers.module').then((module) => module.CustomersModule),
   },
   {
-    path: '**',
-    redirectTo: 'clientes'
+    path: 'produtos',
+    loadChildren: (): Promise<any> => import('./pages/products/products.module').then((module) => module.ProductsModule),
   },
 ];
 
