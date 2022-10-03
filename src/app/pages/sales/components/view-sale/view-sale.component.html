@@ -1,0 +1,75 @@
+<div class="overflow-hidden bg-white shadow sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Visualizar venda</h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">Dados da venda.</p>
+  </div>
+
+  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+    <dl class="sm:divide-y sm:divide-gray-200">
+      <div class="data">
+        <dt class="data-title">
+          Cliente
+        </dt>
+
+        <dd class="data-description">
+          <a [routerLink]="'../../../clientes/editar/' + sale.customer.id" class="hover:text-indigo-500">
+            {{ sale.customer.name }}
+          </a>
+        </dd>
+      </div>
+
+      <div class="data">
+        <dt class="data-title">
+          Total
+        </dt>
+
+        <dd class="data-description">
+          {{ total }}
+        </dd>
+      </div>
+
+      <div class="data">
+        <dt class="data-title">
+          Data e hora
+        </dt>
+
+        <dd class="data-description">
+          {{ sale.date_time | date:'dd/MM/Y H:s' }}
+        </dd>
+      </div>
+
+      <div class="data">
+        <dt class="data-title">
+          Produtos
+        </dt>
+
+        <dd class="data-description">
+          <ul class="divide-y divide-gray-200 rounded-md border border-gray-200" role="list">
+            <li *ngFor="let product of sale.products" class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
+              <div class="flex w-0 flex-1 items-center">
+                <span class="ml-2 w-0 flex-1 truncate">
+                  {{ product.name }}
+                  <span class="text-xs text-gray-400 ml-3">
+                    ({{ product.quantity }} x {{ formatPrice(product.unit_value) }})
+                  </span>
+                </span>
+              </div>
+
+              <div class="ml-4 flex-shrink-0">
+                <span class="font-medium text-indigo-600 hover:text-indigo-500">
+                  {{ formatPrice(product.quantity * product.unit_value) }}
+                </span>
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="px-6 mb-5 flex justify-end space-x-3">
+      <button class="button button-neutral" routerLink="../.." type="button">
+        Voltar
+      </button>
+    </div>
+  </div>
+</div>

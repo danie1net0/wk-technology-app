@@ -1,0 +1,89 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="py-4 space-y-6 divide-y divide-gray-200">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="flex flex-col md:flex-row">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">
+        Venda
+      </h3>
+
+      <p class="mt-1 text-sm text-gray-600">
+        Registrar venda.
+      </p>
+    </div>
+
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <div class="overflow-hidden shadow rounded-md">
+        <div class="bg-white px-4 py-5 sm:p-6">
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4">
+            <div>
+              <app-label>Cliente:</app-label>
+
+              <app-select [isValid]="isValid('customer_id')" formControlName="customer_id">
+                <option *ngFor="let customer of customers" [value]="customer.id">
+                  {{ customer.name }}
+                </option>
+              </app-select>
+
+              <app-errors [control]="formGroup.get('customer_id')"></app-errors>
+            </div>
+          </div>
+
+          <div class="mt-4" formArrayName="products">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+              <h1 class="text-xl font-semibold text-gray-900">
+                Produtos
+              </h1>
+
+              <button (click)="addProduct()" class="button button-green" routerLink="../cadastrar" type="button">
+                Adicionar Produto
+              </button>
+            </div>
+
+            <app-errors [control]="productsForm"></app-errors>
+
+            <div *ngFor="let product of productsForm.controls; let index = index">
+              <div [formGroupName]="index" class="flex flex-col md:flex-row items-end gap-y-6 gap-x-4">
+                <div class="flex-1 w-full">
+                  <app-label>Produto:</app-label>
+
+                  <app-select [isValid]="isValid('products.' + index + '.id')" formControlName="id">
+                    <option *ngFor="let product of products" [value]="product.id">
+                      {{ product.name }}
+                    </option>
+                  </app-select>
+
+                  <app-errors [control]="formGroup.get('products.' + index + '.id')"></app-errors>
+                </div>
+
+                <div class="flex-1 w-full">
+                  <app-label>Quantidade:</app-label>
+
+                  <app-input
+                    [isValid]="isValid('products.' + index + '.quantity')"
+                    [min]="1"
+                    formControlName="quantity"
+                    inputType="number"></app-input>
+
+                  <app-errors [control]="formGroup.get('products.' + index + '.quantity')"></app-errors>
+                </div>
+
+                <button (click)="removeProduct(index)" class="button button-red">
+                  <x-mark-icon></x-mark-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-6 flex justify-end space-x-3">
+    <button class="button button-neutral" routerLink=".." type="button">
+      Voltar
+    </button>
+
+    <button class="button button-indigo" type="submit">
+      Salvar
+    </button>
+  </div>
+</form>
