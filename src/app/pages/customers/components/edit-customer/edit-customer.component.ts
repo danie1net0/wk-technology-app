@@ -38,7 +38,7 @@ export class EditCustomerComponent extends Form implements OnInit {
       address: this.formBuilder.group({
         zip_code: [this.customer.address.zip_code, [Validators.required, CustomValidators.zipCode]],
         public_place: [this.customer.address.public_place, [Validators.required, Validators.maxLength(255)]],
-        number: [this.customer.address.number, [Validators.required, Validators.maxLength(15), Validators.minLength(3)]],
+        number: [this.customer.address.number, [Validators.required, Validators.maxLength(15)]],
         neighborhood: [this.customer.address.neighborhood, [Validators.required, Validators.maxLength(255)]],
         complement: [this.customer.address.complement, [Validators.maxLength(255)]],
         city: [this.customer.address.city, [Validators.required, Validators.maxLength(255)]],

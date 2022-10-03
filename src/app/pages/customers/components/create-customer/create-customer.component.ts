@@ -30,7 +30,7 @@ export class CreateCustomerComponent extends Form implements OnInit {
       address: this.formBuilder.group({
         zip_code: [null, [Validators.required, CustomValidators.zipCode]],
         public_place: [null, [Validators.required, Validators.maxLength(255)]],
-        number: [null, [Validators.required, Validators.maxLength(15), Validators.minLength(3)]],
+        number: [null, [Validators.required, Validators.maxLength(15)]],
         neighborhood: [null, [Validators.required, Validators.maxLength(255)]],
         complement: [null, [Validators.maxLength(255)]],
         city: [null, [Validators.required, Validators.maxLength(255)]],

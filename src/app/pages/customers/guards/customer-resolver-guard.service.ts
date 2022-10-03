@@ -19,7 +19,8 @@ export class CustomerResolverGuard {
     }
 
     return this.customerService
-      .show(route.params['id']).pipe(
+      .show(route.params['id'])
+      .pipe(
         take(1),
         map((response: ApiResponse<Customer>) => response.data)
       );
