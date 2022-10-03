@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'vendas',
     loadChildren: (): Promise<any> => import('./pages/sales/sales.module').then((module) => module.SalesModule),
   },
+  {
+    path: '**',
+    redirectTo: 'clientes',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
