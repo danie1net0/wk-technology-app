@@ -1,0 +1,12 @@
+ion-select {
+  --placeholder-opacity: 1;
+
+  &::part(text) {
+    white-space: normal !important;
+    transform: none !important;
+  }
+}
+
+.invalid {
+  @apply border-red-500 text-red-500 placeholder:text-red-500;
+}
